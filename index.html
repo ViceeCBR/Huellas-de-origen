@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taller de Captura e Interacción Gestual</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Dependencias de MediaPipe (Librerías desde CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div class="app-shell">
+    
+    <!-- Barra Superior -->
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ESTUDIO VIRTUAL</p>
+        <h1>Workshop Cam</h1>
+      </div>
+      <div class="top-actions">
+        <span class="status" id="status-indicator">Desconectado</span>
+        <button class="primary" id="btn-toggle-cam">Activar Cámara</button>
+      </div>
+    </header>
+
+    <!-- Área Principal de Captura / Lienzo -->
+    <main class="stage-wrap">
+      <canvas id="workshop" width="1280" height="720"></canvas>
+      <video id="camera" autoplay playsinline></video>
+      
+      <!-- Overlay cuando la cámara está apagada -->
+      <div class="camera-overlay" id="camera-overlay">
+        <span>Cámara Desactivada</span>
+        <small>Presiona "Activar Cámara" para iniciar la detección de manos</small>
+      </div>
+    </main>
+
+    <!-- Barra de Estado e Instrucciones -->
+    <footer class="helpbar">
+      <div>
+        <b>ESTADO</b>
+        <p class="notice" id="notice-msg">Esperando inicio de la cámara...</p>
+      </div>
+      
+      <div class="keys">
+        <span><kbd>👆 ÍNDICE</kbd> Mover Cursor</span>
+        <span><kbd>👌 PELLIZCO</kbd> Seleccionar / Estampar</span>
+        <span><kbd>C</kbd> Limpiar Lienzo</span>
+      </div>
+    </footer>
+
+    <!-- Ajustes Opcionales -->
+    <details class="setup">
+      <summary>Instrucciones de uso</summary>
+      <p>
+        1. Activa la cámara y dale permisos al navegador.<br>
+        2. Mantén tu mano frente a la cámara. Verás un cursor circular.<br>
+        3. Junta la punta de tu dedo <b>índice</b> con el <b>pulgar</b> para simular un clic (cerrar la mano).<br>
+        4. Puedes presionar los botones flotantes del lienzo o estampar círculos en el área libre.
+      </p>
+    </details>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
